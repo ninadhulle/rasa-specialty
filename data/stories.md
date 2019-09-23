@@ -10,7 +10,7 @@
  - utter_ask_address_on_file
 * inform{"address_on_file": "yes"}
 * deny
- - utter_ack_dosearch
+ - utter_search_prescription
  - action_search_prescription_drug_list
  - action_order_drugs
  - action_suggest
