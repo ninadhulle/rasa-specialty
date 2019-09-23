@@ -53,7 +53,7 @@
 ## intent:inform
 
 
-## intent:request_info
+## intent:query
 - do you have their [address](info)
 - do you have its [phone number](info)
 - can i have their [phone number](info)
@@ -70,6 +70,8 @@
 - give me their [address](info)
 - can i have their [address](info)
 - what is the [address](info) of the restaurant
+
+## intent:close
 
 ## intent:thankyou
 - um thank you good bye
@@ -95,6 +97,8 @@
 - uh okay thank you good bye
 - thank you bye
 - um okay thank you good bye
+
+## intent:close
 
 ## synonym:2
 - two

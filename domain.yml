@@ -1,18 +1,33 @@
 slots:
-  drugs:
-    type: text
   address:
+    type: text
+  drug_name:
+    type: text
+  addresse:
     type: text
   referral:
     type: text
   prescription:
     type: text
+  drug_strength:
+    type: text
+  drug_quantity:
+    type: text
+  email:
+    type: text
+  patient:
+    type: text        
 
 entities:
 - address
-- drugs
+- drug
 - referral
-- prescription 
+- prescription
+- prescriber
+- drug_quantity
+- drug_strength 
+- email
+- patient
 
 intents:
  - greet
@@ -20,50 +35,89 @@ intents:
  - deny
  - inform
  - thankyou
- - request_info
+ - query
  - referrals
+ - prescriptions
+ - close
 
 templates:
   utter_greet:
-    - text: "hey there!"
+    - text: "hey there {patient}!"
   utter_goodbye:
     - text: "goodbye :("
     - text: "Bye-bye"
   utter_default:
     - text: "default message"
+  utter_search_prescription:
+    - text: "Searching your prescriptions."  
+  utter_prescription_options:
+    - text: "You have {prescription_count} from below prescribers. Please choose one or both."
+      buttons:
+        - title: "John Heart"
+          payload: "John Heart"
+        - title: "Jane Spine"
+          payload: "Jane Spine"
+  utter_prescription_details:
+    - text: "You have {drug_name} with strength {drug_strength} and quantity {drug_quantity} in your prescription by prescriber {prescriber}."
+  utter_ask_prescription_drug_name:
+    -text: "You want to refill {drug_name}?"
+      buttons:
+        - title: "Yes"
+          payload: "Yes"
+        - title: "No"
+          payload: "No"
+  utter_ask_prescription_drug_quantity:
+    - text: "Do you want to change the {drug_name} quantity?"
+      buttons:
+        - title: "Yes"
+          payload: "Yes"
+        - title: "No"
+          payload: "No"       
+  utter_ask_address_on_file:
+    - text: "Do you want me to ship prescription refill to one of these below addresses we have on file?"
+    buttons:
+        - title: "12, PFizer Ln, New Haven, CT"
+          payload: "12, PFizer Ln, New Haven, CT"
+        - title: "21 Beach Blvd, Jacksonville, FL"
+          payload: "21 Beach Blvd, Jacksonville, FL"
+  utter_ask_prescription_refill_confirmation:
+    - text: "Here is the refill details before I submit refill request. {drug_name}, {drug_strength}, {drug_quantity} tablets and delivered to {address}. Please confirm by clicking Yes/No buttons or type Yes or No."
+    buttons:
+        - title: "Yes"
+          payload: "Yes"
+        - title: "No"
+          payload: "No"
+  utter_prescription_refill_confirmation:
+    -text: "Super! I have placed the refill order. You will get confirmation shortly on your email {email} on file with us."
   utter_ask_howcanhelp:
     - text: "how can I help you?"
-  utter_ask_moreupdates:
-    - text: "if you'd like to modify anything else, please tell me what. This is what I currently have: {location} (price: {price}, cuisine: {cuisine}) for {people} people."
-  utter_ask_price:
-    - text: "in which price range?"
-      buttons:
-      - title: "cheap"
-        payload: "cheap"
-      - title: "expensive"
-        payload: "expensive"
+  utter_ask_further_query:
+    - text: "Glad to be of help. Is there anything I can help you with?"
   utter_on_it:
     - text: "I'm on it"
-  utter_referral_status:
-    - text: "Hi, {name}! It looks like you have referrals that need to be shipped, do you want to know the status of the referrals? Currently your referral is in {orderstage}, it would be arriving {on,by} {target_date} ”
-
+  utter_close:
+    - text: "Good Bye! Have a nice day!"
+    - text: "Bye! Have nice day too"    
   
 
 actions:
 - utter_greet
 - utter_goodbye
 - utter_default
-- utter_prescription_options
-- utter_ask_quantity
-- utter_ask_address_on_file
 - utter_search_prescription
+- utter_prescription_options
+- utter_prescription_details
+- utter_ask_prescription_drug_name
+- utter_ask_prescription_drug_quantity
+- utter_ask_address_on_file
+- utter_ask_prescription_refill_confirmation
+- utter_prescription_refill_confirmation
 - utter_ask_howcanhelp
-- action_search_prescription_drug_list
-- action_order_drugs
 - utter_ack_order
-- utter_ask_moreupdates
-- utter_ask_numpeople
-- utter_ask_price
+- utter_ask_further_query
 - utter_on_it
-- action_suggest
-- utter_referral_status
+- utter_close
+- action_search_prescriptions_for_patient
+- action_get_drugs_from_prescription
+- action_order_drugs
+- action_search_addresses_for_patient
