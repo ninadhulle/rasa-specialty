@@ -3,12 +3,16 @@ slots:
     type: text
   drug_name:
     type: text
-  addresse:
+  addresses:
     type: text
   referral:
     type: text
-  prescription:
+  prescription_number:
+    type: text  
+  prescription_count:
     type: text
+  prescriber_count:
+    type: text  
   drug_strength:
     type: text
   drug_quantity:
@@ -16,18 +20,22 @@ slots:
   email:
     type: text
   patient:
-    type: text        
+    type: text          
 
 entities:
 - address
-- drug
+- drug_name
+- addresses
 - referral
-- prescription
-- prescriber
+- prescription_number
+- prescription_count
+- prescriber_count
 - drug_quantity
 - drug_strength 
 - email
 - patient
+- drug_status
+- drug_delivery_target_date
 
 intents:
  - greet
@@ -36,7 +44,7 @@ intents:
  - inform
  - thankyou
  - query
- - referrals
+ - refill
  - prescriptions
  - close
 
@@ -58,7 +66,7 @@ templates:
         - title: "Jane Spine"
           payload: "Jane Spine"
   utter_prescription_details:
-    - text: "You have {drug_name} with strength {drug_strength} and quantity {drug_quantity} in your prescription by prescriber {prescriber}."
+    - text: "You have {drug_name} with strength {drug_strength} and quantity {drug_quantity} in your prescription {prescription_number} by prescriber {prescriber}."
   utter_ask_prescription_drug_name:
     -text: "You want to refill {drug_name}?"
       buttons:
@@ -95,13 +103,24 @@ templates:
     - text: "Glad to be of help. Is there anything I can help you with?"
   utter_on_it:
     - text: "I'm on it"
+  utter_get_started:
+    - text: "Lets get started."  
   utter_close:
     - text: "Good Bye! Have a nice day!"
     - text: "Bye! Have nice day too"    
+  utter_open_prescriptions:
+    - text: "You have following prescriptions, please choose any of the prescription."
+      buttons:
+        -title: "Lipitor 5 mg "
+        payload: "Lipitor 5 mg"
+  utter_prescription_delivery_status:
+    -text: "{drug_name} --> {drug_status} --> {drug_delivery_target_date}"
+
   
 
 actions:
 - utter_greet
+- utter_get_started
 - utter_goodbye
 - utter_default
 - utter_search_prescription
@@ -117,6 +136,8 @@ actions:
 - utter_ask_further_query
 - utter_on_it
 - utter_close
+- utter_prescription_delivery_status
+- utter_open_prescriptions
 - action_search_prescriptions_for_patient
 - action_get_drugs_from_prescription
 - action_order_drugs

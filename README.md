@@ -1,4 +1,4 @@
-# Restaurant Bot
+# Specialty Bot
 
 This example includes a file called `run.py`, which contains an example
 of how to use Rasa directly from your python code.
@@ -36,6 +36,4 @@ rasa run actions
 rasa run -m models --endpoints endpoints.yml
 ```
 
-For more information about the individual commands, please check out our 
-[documentation](http://rasa.com/docs/rasa/user-guide/command-line-interface/).
 

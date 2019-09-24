@@ -14,13 +14,13 @@
 - good afternoon
 - Hi there
 - Hi
+- I am glad to help you with that, let's get started.
 
 ## intent:affirm
 - uh yes im looking refill
-- yeah a cheap restaurant serving international food
 - correct
-- ye
-- uh yes tylenol
+- yes
+- uh yes
 - let's do it
 - yeah
 - um yes
@@ -30,7 +30,6 @@
 - yes
 - yes right
 - yeah i need to find
-- uh yes i need the north part of town
 - yea thank you good bye
 - yes can i have
 - right on good bye peace
@@ -46,11 +45,12 @@
 - no thank you good bye
 - no thank you
 - uh no
-- do you have something else
-- no center
 - no this does not work for me
 
 ## intent:inform
+- I want to refill my prescriptions
+- I want order refill
+- you have [prescription_count](info) from [p] 
 
 
 ## intent:query

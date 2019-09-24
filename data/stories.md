@@ -1,9 +1,10 @@
 ## story_1
 * greet
+ - utter_greet
  - utter_ask_howcanhelp
-* options
- - utter_prescription_options
-* inform{"drug": "Tylenol"}
+* inform{"drug_name": "Lipitor", "drug_strength":"5 mg", "drug_quantity":"100"}
+ 
+* inform{"drug_name": "Lipitor", "drug_strength":"5 mg", "drug_quantity":"100"}
  - utter_on_it
  - utter_ask_quantity
 * inform{"quantity": "100mg"}
