@@ -101,7 +101,7 @@ templates:
     - title: No
       payload: No
   utter_prescription_refill_confirmation:
-  - text: -text
+  - text: I have placed the order, you will get confirmation email on {email}.
   utter_ask_howcanhelp:
   - text: how can I help you?
   utter_ask_further_query:
