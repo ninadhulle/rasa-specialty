@@ -1,27 +1,13 @@
-slots:
-  address:
-    type: text
-  drug_name:
-    type: text
-  addresses:
-    type: text
-  referral:
-    type: text
-  prescription_number:
-    type: text  
-  prescription_count:
-    type: text
-  prescriber_count:
-    type: text  
-  drug_strength:
-    type: text
-  drug_quantity:
-    type: text
-  email:
-    type: text
-  patient:
-    type: text          
-
+intents:
+- greet
+- affirm
+- deny
+- inform
+- thankyou
+- query
+- refill
+- prescriptions
+- close
 entities:
 - address
 - drug_name
@@ -31,93 +17,109 @@ entities:
 - prescription_count
 - prescriber_count
 - drug_quantity
-- drug_strength 
+- drug_strength
 - email
 - patient
 - drug_status
 - drug_delivery_target_date
-
-intents:
- - greet
- - affirm
- - deny
- - inform
- - thankyou
- - query
- - refill
- - prescriptions
- - close
-
+- refill_confirmation
+- drug_quantity_status
+- info
+slots:
+  address:
+    type: text
+  addresses:
+    type: text
+  drug_name:
+    type: text
+  drug_quantity:
+    type: text
+  drug_strength:
+    type: text
+  email:
+    type: text
+  patient:
+    type: text
+  prescriber_count:
+    type: text
+  prescription_count:
+    type: text
+  prescription_number:
+    type: text
+  referral:
+    type: text
 templates:
   utter_greet:
-    - text: "hey there {patient}!"
+  - text: hey there {patient}!
   utter_goodbye:
-    - text: "goodbye :("
-    - text: "Bye-bye"
+  - text: goodbye :(
+  - text: Bye-bye
   utter_default:
-    - text: "default message"
+  - text: default message
   utter_search_prescription:
-    - text: "Searching your prescriptions."  
+  - text: Searching your prescriptions.
   utter_prescription_options:
-    - text: "You have {prescription_count} from below prescribers. Please choose one or both."
-      buttons:
-        - title: "John Heart"
-          payload: "John Heart"
-        - title: "Jane Spine"
-          payload: "Jane Spine"
+  - text: You have {prescription_count} from below prescribers. Please choose one
+      or both.
+    buttons:
+    - title: John Heart
+      payload: John Heart
+    - title: Jane Spine
+      payload: Jane Spine
   utter_prescription_details:
-    - text: "You have {drug_name} with strength {drug_strength} and quantity {drug_quantity} in your prescription {prescription_number} by prescriber {prescriber}."
+  - text: You have {drug_name} with strength {drug_strength} and quantity {drug_quantity}
+      in your prescription {prescription_number} by prescriber {prescriber}.
   utter_ask_prescription_drug_name:
-    -text: "You want to refill {drug_name}?"
-      buttons:
-        - title: "Yes"
-          payload: "Yes"
-        - title: "No"
-          payload: "No"
+  - text: You want to refill {drug_name}?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_prescription_drug_quantity:
-    - text: "Do you want to change the {drug_name} quantity?"
-      buttons:
-        - title: "Yes"
-          payload: "Yes"
-        - title: "No"
-          payload: "No"       
+  - text: Do you want to change the {drug_name} quantity?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_address_on_file:
-    - text: "Do you want me to ship prescription refill to one of these below addresses we have on file?"
+  - text: Do you want me to ship prescription refill to one of these below addresses
+      we have on file?
     buttons:
-        - title: "12, PFizer Ln, New Haven, CT"
-          payload: "12, PFizer Ln, New Haven, CT"
-        - title: "21 Beach Blvd, Jacksonville, FL"
-          payload: "21 Beach Blvd, Jacksonville, FL"
+    - title: 12, PFizer Ln, New Haven, CT
+      payload: 12, PFizer Ln, New Haven, CT
+    - title: 21 Beach Blvd, Jacksonville, FL
+      payload: 21 Beach Blvd, Jacksonville, FL
   utter_ask_prescription_refill_confirmation:
-    - text: "Here is the refill details before I submit refill request. {drug_name}, {drug_strength}, {drug_quantity} tablets and delivered to {address}. Please confirm by clicking Yes/No buttons or type Yes or No."
+  - text: Here is the refill details before I submit refill request. {drug_name},
+      {drug_strength}, {drug_quantity} tablets and delivered to {address}. Please
+      confirm by clicking Yes/No buttons or type Yes or No.
     buttons:
-        - title: "Yes"
-          payload: "Yes"
-        - title: "No"
-          payload: "No"
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_prescription_refill_confirmation:
-    -text: "Super! I have placed the refill order. You will get confirmation shortly on your email {email} on file with us."
+  - text: -text
   utter_ask_howcanhelp:
-    - text: "how can I help you?"
+  - text: how can I help you?
   utter_ask_further_query:
-    - text: "Glad to be of help. Is there anything I can help you with?"
+  - text: Glad to be of help. Is there anything I can help you with?
   utter_on_it:
-    - text: "I'm on it"
+  - text: I'm on it
   utter_get_started:
-    - text: "Lets get started."  
+  - text: Lets get started.
   utter_close:
-    - text: "Good Bye! Have a nice day!"
-    - text: "Bye! Have nice day too"    
+  - text: Good Bye! Have a nice day!
+  - text: Bye! Have nice day too
   utter_open_prescriptions:
-    - text: "You have following prescriptions, please choose any of the prescription."
-      buttons:
-        -title: "Lipitor 5 mg "
-        payload: "Lipitor 5 mg"
+  - text: You have following prescriptions, please choose any of the prescription.
+    buttons:
+      -title: 'Lipitor 5 mg '
+      payload: Lipitor 5 mg
   utter_prescription_delivery_status:
-    -text: "{drug_name} --> {drug_status} --> {drug_delivery_target_date}"
-
-  
-
+  - text: -text
 actions:
 - utter_greet
 - utter_get_started
@@ -142,3 +144,4 @@ actions:
 - action_get_drugs_from_prescription
 - action_order_drugs
 - action_search_addresses_for_patient
+- action_search_prescription_drug_list

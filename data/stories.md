@@ -2,19 +2,24 @@
 * greet
  - utter_greet
  - utter_ask_howcanhelp
-* inform{"drug_name": "Lipitor", "drug_strength":"5 mg", "drug_quantity":"100"}
- 
-* inform{"drug_name": "Lipitor", "drug_strength":"5 mg", "drug_quantity":"100"}
  - utter_on_it
- - utter_ask_quantity
-* inform{"quantity": "100mg"}
+* inform{"prescription_count": "one", "prescriber_count":"two"}
+ - utter_search_prescription
+ - utter_prescription_options
+* inform{"drug_name": "Lipitor", "drug_strength":"5 mg", "drug_quantity":"100"}
+ - utter_ask_prescription_drug_name
+* inform{"drug_quantity": "100mg", "drug_quantity_status":"Yes"}
+ - utter_ask_prescription_drug_quantity
+* inform{"addresses": "12, PFizer Ln, New Haven, CT"} 
  - utter_ask_address_on_file
-* inform{"address_on_file": "yes"}
+* inform{"refill_confirmation": "yes"}
+ - utter_ask_prescription_refill_confirmation
+ - utter_prescription_refill_confirmation
+ - utter_ask_further_query
 * deny
  - utter_search_prescription
  - action_search_prescription_drug_list
  - action_order_drugs
- - action_suggest
 * affirm
  - utter_ack_order
 * thankyou
