@@ -17,8 +17,8 @@
 * inform{"addresses": "12, PFizer Ln, New Haven, CT"}
  - slot{"addresses": "12, PFizer Ln, New Haven, CT"} 
  - utter_ask_address_on_file
-* inform{"refill_confirmation": "yes"}
- - slot{"refill_confirmation": "yes"}
+* affirm{"drug_name": "Lipitor", "drug_strength":"5 mg", "drug_quantity":"100", "addresses":"12, PFizer Ln, New Haven, CT", "email":"John.Doe@test.com"}
+ - slot{"drug_name": "Lipitor", "drug_strength":"5 mg", "drug_quantity":"100", "addresses":"12, PFizer Ln, New Haven, CT", "email":"John.Doe@test.com"}
  - utter_ask_prescription_refill_confirmation
  - utter_prescription_refill_confirmation
  - utter_ask_further_query
@@ -54,11 +54,11 @@
 * affirm{"addresses": "12, PFizer Ln, New Haven, CT"}
  - slot{"addresses": "12, PFizer Ln, New Haven, CT"}
  - utter_ask_address_on_file
-* inform{"refill_confirmation": "yes"}
- - slot{"refill_confirmation": "yes"}
+* inform{"drug_name": "Lipitor", "drug_strength":"5 mg", "drug_quantity":"100", "addresses":"12, PFizer Ln, New Haven, CT"}
+ - slot{"drug_name": "Lipitor", "drug_strength":"5 mg", "drug_quantity":"100", "addresses":"12, PFizer Ln, New Haven, CT"}
  - utter_ask_prescription_refill_confirmation
-* affirm{"drug_name": "Lipitor", "drug_strength":"5 mg", "drug_quantity":"100"}
- - slot{"drug_name": "Lipitor", "drug_strength":"5 mg", "drug_quantity":"100"}
+* affirm{"email":"John.Doe@test.com"}
+ - slot{"email":"John.Doe@test.com"}
  - utter_prescription_refill_confirmation
 * thankyou
  - utter_ask_further_query
@@ -68,21 +68,28 @@
 
 ## New Story
 * greet{"patient":"John Doe"}
+ - slot{"name":"John Doe"}
  - utter_greet
  - utter_ask_howcanhelp
 * inform{"prescription_count": "one", "prescriber_count":"two"}
+ - slot{"prescription_count": "one", "prescriber_count":"two"}
  - utter_search_prescription
  - utter_prescription_options
 * affirm{"drug_name": "Lipitor", "drug_strength":"5 mg", "drug_quantity":"100"}
+ - slot{"drug_name": "Lipitor", "drug_strength":"5 mg", "drug_quantity":"100"}
  - utter_prescription_details
  - utter_ask_prescription_drug_name
 * affirm{"drug_name": "Lipitor"}
+ - slot{"drug_name": "Lipitor"}
  - utter_ask_prescription_drug_quantity
-* deny{"drug_name": "Lipitor", "drug_strength":"5 mg", "drug_quantity":"100"}
+* deny{"drug_name": "Lipitor", "drug_strength":"5 mg", "drug_quantity":"100", "addresses":"12, PFizer Ln, New Haven, CT", "email":"John.Doe@test.com"}
+ - slot{"drug_name": "Lipitor", "drug_strength":"5 mg", "drug_quantity":"100", "addresses":"12, PFizer Ln, New Haven, CT", "email":"John.Doe@test.com"}
  - utter_ask_prescription_refill_confirmation
 * inform{"addresses": "12, PFizer Ln, New Haven, CT"}
+ - slot{"addresses": "12, PFizer Ln, New Haven, CT"}
  - utter_ask_address_on_file 
 * affirm{"email": "John.Doe@test.com"}
+ - slot{"email": "John.Doe@test.com"}
  - utter_prescription_refill_confirmation
 * thankyou
  - utter_ask_further_query
