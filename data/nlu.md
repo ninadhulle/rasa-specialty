@@ -35,6 +35,7 @@
 - uh no
 - no this does not work for me
 - No
+- That is all
 
 ## intent:greet
 - hi there
@@ -53,6 +54,7 @@
 - Hi there
 - Hi
 - I am glad to help you with that, let's get started.
+- Hi There
 
 ## intent:inform
 - I want to refill my prescriptions
@@ -60,6 +62,7 @@
 - you have [prescription_count](info) from [p]
 - I want to refill my prescription
 - 12, PFizer Ln, New Haven, CT
+- I want to refill my current prescription
 
 ## intent:query
 - do you have their [address](info)
@@ -103,6 +106,7 @@
 - uh okay thank you good bye
 - thank you bye
 - um okay thank you good bye
+- Thanks
 
 ## synonym:2
 - two

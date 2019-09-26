@@ -25,6 +25,7 @@ entities:
 - refill_confirmation
 - drug_quantity_status
 - info
+- name
 slots:
   address:
     type: text
@@ -34,11 +35,17 @@ slots:
     type: text
   drug_quantity:
     type: text
+  drug_quantity_status:
+    type: text
   drug_strength:
     type: text
   email:
     type: text
+  name:
+    type: text
   patient:
+    type: text
+  prescriber:
     type: text
   prescriber_count:
     type: text
@@ -48,11 +55,13 @@ slots:
     type: text
   referral:
     type: text
+  refill_confirmation:
+    type: text
 templates:
   utter_greet:
   - text: hey there {patient}!
   utter_goodbye:
-  - text: goodbye :(
+  - text: goodbye :)
   - text: Bye-bye
   utter_default:
   - text: default message
